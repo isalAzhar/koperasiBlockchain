@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, Eye, EyeOff } from "lucide-react";
 import api from "../api/api";
 
 export default function Login() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    email: "admin@gmail.com",
-    password: "admin123",
+    email: "",
+    password: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setForm({
@@ -73,13 +74,24 @@ export default function Login() {
           />
 
           <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="admin123"
-          />
+          <div className="password-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword((prev) => !prev)}
+              tabIndex={-1}
+              aria-label={showPassword ? "Sembunyikan password" : "Tampilkan password"}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
 
           <button type="submit" disabled={loading}>
             {loading ? "Memproses..." : "Login"}

@@ -67,7 +67,7 @@ async function getTransaksiTerbaru() {
       t.created_at
     FROM transaksi t
     LEFT JOIN anggota a ON a.id_anggota = t.id_anggota
-    ORDER BY t.id_transaksi DESC
+    ORDER BY t.tanggal_transaksi DESC
     LIMIT 5
   `);
 

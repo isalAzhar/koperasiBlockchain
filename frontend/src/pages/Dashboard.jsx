@@ -51,16 +51,6 @@ export default function Dashboard() {
           <h1>Dashboard</h1>
           <p>Ringkasan transaksi koperasi dan status integritas blockchain.</p>
         </div>
-
-        <div
-          className={
-            summary?.blockchain?.valid
-              ? "status-pill success"
-              : "status-pill danger"
-          }
-        >
-          {summary?.blockchain?.valid ? "Blockchain Valid" : "Blockchain Tidak Valid"}
-        </div>
       </section>
 
       {loading ? (
@@ -114,7 +104,7 @@ export default function Dashboard() {
           <div className="content-card">
             <div className="card-header">
               <h3>Transaksi Terbaru</h3>
-              <p>5 transaksi terakhir yang tercatat di sistem.</p>
+              <p>{latest.length} transaksi terakhir yang tercatat di sistem.</p>
             </div>
 
             <div className="table-wrapper">

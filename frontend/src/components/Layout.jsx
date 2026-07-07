@@ -47,7 +47,7 @@ export default function Layout({ children }) {
             Tambah Transaksi
           </NavLink>
 
-          <NavLink to="/transaksi">
+          <NavLink to="/transaksi" end>
             <ReceiptText size={20} />
             Riwayat Transaksi
           </NavLink>
@@ -78,7 +78,6 @@ export default function Layout({ children }) {
 
           <div className="user-pill">
             <span>{user.nama || "User"}</span>
-            <small>{user.role || "role"}</small>
           </div>
         </header>
 
